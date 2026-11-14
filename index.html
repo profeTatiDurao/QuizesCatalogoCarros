@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Motors - Central de Missões</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-space: #740b1c;
+            --surface: #0e1326;
+            --card-bg: #5885b9;
+            --border-subtle: rgba(0, 229, 255, 0.24);
+            --nitro-red: #ff3b6b;
+            --turbo-cyan: #00e5ff;
+            --cyan-glow: rgba(0, 229, 255, 0.35);
+            --electric-violet: #8b5cf6;
+            --neon-mint: #00f5a0;
+            --mint-glow: rgba(0, 245, 160, 0.35);
+            --locked-bg: #0a0d1a;
+            --locked-border: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-space);
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(0, 229, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 40px 20px 80px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Header do Hub */
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+            animation: slideDown 0.6s ease;
+        }
+
+        .tech-pill {
+            display: inline-block;
+            background: rgba(0, 229, 255, 0.12);
+            color: var(--turbo-cyan);
+            border: 1px solid var(--turbo-cyan);
+            padding: 6px 20px;
+            border-radius: 999px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+            box-shadow: 0 0 16px rgba(0, 229, 255, 0.18);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, #ffffff, var(--turbo-cyan) 50%, var(--neon-mint));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .subtitulo {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Grid de Missões */
+        .grid-missoes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        /* Cards Ativos */
+        .card-missao {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 20px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeIn 0.6s ease backwards;
+        }
+
+        .card-missao:nth-child(1) { animation-delay: 0.1s; }
+        .card-missao:nth-child(2) { animation-delay: 0.2s; }
+        .card-missao:nth-child(3) { animation-delay: 0.3s; }
+        .card-missao:nth-child(4) { animation-delay: 0.4s; }
+
+        .card-missao:hover {
+            transform: translateY(-8px);
+            border-color: var(--turbo-cyan);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.15);
+        }
+
+        .card-missao:hover .icon-wrapper {
+            background: var(--turbo-cyan);
+            color: var(--bg-space);
+            box-shadow: 0 0 20px var(--cyan-glow);
+        }
+
+        .icon-wrapper {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--turbo-cyan);
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card-missao h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .card-missao p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .btn-acessar {
+            display: inline-block;
+            text-align: center;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--turbo-cyan);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--turbo-cyan);
+            transition: 0.3s ease;
+        }
+
+        .card-missao:hover .btn-acessar {
+            background: linear-gradient(135deg, var(--turbo-cyan), var(--electric-violet));
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
+        }
+
+        /* Cards Bloqueados */
+        .card-locked {
+            background: var(--locked-bg);
+            border: 1px dashed var(--locked-border);
+            border-radius: 20px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0.6;
+            cursor: not-allowed;
+            animation: fadeIn 0.6s ease backwards;
+            animation-delay: 0.5s;
+            transition: 0.3s ease;
+        }
+
+        .card-locked:hover {
+            opacity: 0.8;
+            border-color: #475569;
+        }
+
+        .card-locked .icon-lock {
+            font-size: 2rem;
+            color: #475569;
+            margin-bottom: 16px;
+        }
+
+        .card-locked h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .card-locked p {
+            color: #475569;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .grid-missoes { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <span class="tech-pill"><i class="fas fa-terminal"></i> GARAGEM DEV // TREINAMENTO</span>
+            <h1>Catálogo Auto Motors</h1>
+            <p class="subtitulo">Sua trilha de missões interativas. Acesse as aulas concluídas, valide seu código e prepare-se para os próximos desafios desbloqueados.</p>
+        </header>
+
+        <div class="grid-missoes">
+            
+            <!-- MISSÃO 01 -->
+            <div class="card-missao">
+                <div class="icon-wrapper"><i class="fas fa-id-card"></i></div>
+                <h3>Missão 01</h3>
+                <p>Estrutura de Login & Cadastro (HTML5, Validações Nativas e Formulários).</p>
+                <a href="Aula1/index.html" class="btn-acessar">INICIAR MISSÃO</a>
+            </div>
+
+            <!-- MISSÃO 02 -->
+            <div class="card-missao">
+                <div class="icon-wrapper"><i class="fas fa-fire-flame-curved"></i></div>
+                <h3>Missão 02</h3>
+                <p>Motor do Sistema: Integração Firebase Auth e Realtime Database.</p>
+                <a href="Aula2/index.html" class="btn-acessar">INICIAR MISSÃO</a>
+            </div>
+
+            <!-- MISSÃO 03 -->
+            <div class="card-missao">
+                <div class="icon-wrapper"><i class="fas fa-satellite-dish"></i></div>
+                <h3>Missão 03</h3>
+                <p>Renderização em Tempo Real (DOM e Snapshot de Dados).</p>
+                <a href="Aula3/index.html" class="btn-acessar">INICIAR MISSÃO</a>
+            </div>
+
+            <!-- MISSÃO 04 -->
+            <div class="card-missao">
+                <div class="icon-wrapper"><i class="fas fa-bars-staggered"></i></div>
+                <h3>Missão 04</h3>
+                <p>UI & Interatividade: Controle da Gaveta Lateral (Sidebar) com JS.</p>
+                <a href="Aula4/index.html" class="btn-acessar">INICIAR MISSÃO</a>
+            </div>
+
+            <!-- MISSÕES BLOQUEADAS (05 a 12) -->
+            <!-- Script simples para gerar os cards bloqueados e deixar o HTML limpo -->
+            <script>
+                const grid = document.querySelector('.grid-missoes');
+                for (let i = 5; i <= 12; i++) {
+                    const numeroStr = i.toString().padStart(2, '0');
+                    grid.innerHTML += `
+                        <div class="card-locked">
+                            <i class="fas fa-lock icon-lock"></i>
+                            <h3>Missão ${numeroStr}</h3>
+                            <p>EM BREVE...</p>
+                        </div>
+                    `;
+                }
+            </script>
+            
+        </div>
+    </div>
+
+</body>
+</html>
