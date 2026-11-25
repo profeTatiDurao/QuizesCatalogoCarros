@@ -114,10 +114,16 @@
             animation: fadeIn 0.6s ease backwards;
         }
 
-        .card-missao:nth-child(1) { animation-delay: 0.1s; }
-        .card-missao:nth-child(2) { animation-delay: 0.2s; }
-        .card-missao:nth-child(3) { animation-delay: 0.3s; }
-        .card-missao:nth-child(4) { animation-delay: 0.4s; }
+        .card-missao:nth-child(1) { animation-delay: 0.05s; }
+        .card-missao:nth-child(2) { animation-delay: 0.10s; }
+        .card-missao:nth-child(3) { animation-delay: 0.15s; }
+        .card-missao:nth-child(4) { animation-delay: 0.20s; }
+        .card-missao:nth-child(5) { animation-delay: 0.25s; }
+        .card-missao:nth-child(6) { animation-delay: 0.30s; }
+        .card-missao:nth-child(7) { animation-delay: 0.35s; }
+        .card-missao:nth-child(8) { animation-delay: 0.40s; }
+        .card-missao:nth-child(9) { animation-delay: 0.45s; }
+        .card-missao:nth-child(10) { animation-delay: 0.50s; }
 
         .card-missao:hover {
             transform: translateY(-8px);
@@ -195,7 +201,7 @@
             opacity: 0.6;
             cursor: not-allowed;
             animation: fadeIn 0.6s ease backwards;
-            animation-delay: 0.5s;
+            animation-delay: 0.55s;
             transition: 0.3s ease;
         }
 
@@ -251,7 +257,7 @@
         </header>
 
         <div class="grid-missoes">
-            
+
             <!-- MISSÃO 01 -->
             <div class="card-missao">
                 <div class="icon-wrapper"><i class="fas fa-id-card"></i></div>
@@ -284,11 +290,58 @@
                 <a href="Aula4/index.html" class="btn-acessar">INICIAR MISSÃO</a>
             </div>
 
-            <!-- MISSÕES BLOQUEADAS (05 a 12) -->
-            <!-- Script simples para gerar os cards bloqueados e deixar o HTML limpo -->
+            <!-- MISSÃO 05 -->
+            <div class="card-missao">
+                <div class="icon-wrapper"><i class="fas fa-shield-halved"></i></div>
+                <h3>Missão 05</h3>
+                <p>Sessão & Filtro do Dono: Auth Guard, Logout e Veículos do Usuário.</p>
+                <a href="Aula5/index.html" class="btn-acessar">INICIAR MISSÃO</a>
+            </div>
+
+            <!-- MISSÃO 06 -->
+            <div class="card-missao">
+                <div class="icon-wrapper"><i class="fas fa-user-pen"></i></div>
+                <h3>Missão 06</h3>
+                <p>Edição de Perfil: Atualização Assíncrona e Fluxo com Try/Catch/Finally.</p>
+                <a href="Aula6/index.html" class="btn-acessar">INICIAR MISSÃO</a>
+            </div>
+
+            <!-- MISSÃO 07 -->
+            <div class="card-missao">
+                <div class="icon-wrapper"><i class="fas fa-folder-tree"></i></div>
+                <h3>Missão 07</h3>
+                <p>Rotas & Ações da Frota: Caminhos Relativos, Query String e Cards.</p>
+                <a href="Aula7/index.html" class="btn-acessar">INICIAR MISSÃO</a>
+            </div>
+
+            <!-- MISSÃO 08 -->
+            <div class="card-missao">
+                <div class="icon-wrapper"><i class="fas fa-wrench"></i></div>
+                <h3>Missão 08</h3>
+                <p>Oficina Digital: Parâmetros de URL, Delegação de Eventos e Exclusão.</p>
+                <a href="Aula8/index.html" class="btn-acessar">INICIAR MISSÃO</a>
+            </div>
+
+            <!-- MISSÃO 09 -->
+            <div class="card-missao">
+                <div class="icon-wrapper"><i class="fas fa-key"></i></div>
+                <h3>Missão 09</h3>
+                <p>Posse & Edição: Validação de Dono, Leitura Pontual e Botões de Ação.</p>
+                <a href="Aula9/index.html" class="btn-acessar">INICIAR MISSÃO</a>
+            </div>
+
+            <!-- MISSÃO 10 -->
+            <div class="card-missao">
+                <div class="icon-wrapper"><i class="fas fa-floppy-disk"></i></div>
+                <h3>Missão 10</h3>
+                <p>Linha de Montagem: Salvamento de Veículo com Push e Update.</p>
+                <a href="Aula10/index.html" class="btn-acessar">INICIAR MISSÃO</a>
+            </div>
+
+            <!-- MISSÕES BLOQUEADAS (11 e 12) -->
             <script>
                 const grid = document.querySelector('.grid-missoes');
-                for (let i = 5; i <= 12; i++) {
+                for (let i = 11; i <= 12; i++) {
                     const numeroStr = i.toString().padStart(2, '0');
                     grid.innerHTML += `
                         <div class="card-locked">
@@ -299,9 +352,10 @@
                     `;
                 }
             </script>
-            
+
         </div>
     </div>
 
 </body>
+
 </html>
